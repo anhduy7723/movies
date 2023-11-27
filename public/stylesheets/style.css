@@ -1,0 +1,205 @@
+/* public/stylesheets/style.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  transition: background-color 0.3s ease; /* Added transition for smooth color change */
+}
+
+.dark-mode {
+  background-color: #333; /* Adjusted background color for dark mode */
+  color: #fff;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+}
+header .center-content,.right-content{
+  text-align: center;
+}
+
+.left-content, .right-content, .center-content {
+  flex: 2;
+}
+
+.left-content h1,
+.center-content h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  align-items: center;
+
+}
+
+#darkModeToggle {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+nav {
+  background-color: #333;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin-right: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+nav input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+}
+
+nav button {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+main {
+  margin: 1rem;
+}
+
+section {
+  margin-bottom: 1rem; /* Adjusted margin */
+}
+
+h2 {
+  color: #333;
+}
+
+.slideshow {
+  display: flex;
+  overflow-x: auto;
+  height:35%; /* Adjusted height */
+}
+
+.slide {
+  flex: 0 0 auto;
+  margin-right: 1rem;
+}
+
+.slide img {
+  max-width: 100%;
+  height: 100%; /* Adjusted height */
+}
+
+.movie-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted minmax value */
+  gap: 1rem;
+}
+
+.movie-card {
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #333;
+  color: #fff;
+}
+nav ul li img{
+  width: 50px;
+  height: 50px;
+}
+
+/* Add this to your existing CSS file or create a new one */
+/* Movie Details Modal Styles */
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  width: 300px; /* Adjust the width as needed */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.movie-details {
+  margin: 20px 0;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+.details {
+  margin-top: 10px;
+}
+
+#movieRating,
+#boxOffice {
+  margin: 5px 0;
+}

@@ -1,0 +1,128 @@
+<!-- views/home.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies Information</title>
+  <link rel="stylesheet" href="/stylesheets/style.css"></head>
+<body>
+  <header>
+    <div class="left-content">
+      <h1>MSSV: <%= process.env.INDIVIDUAL_MARK %></h1>
+    </div>
+    <div class="center-content">
+      <h1>Movies Information</h1>
+    </div>
+    <div class="right-content">
+      <!-- Use an icon here, for example, a Font Awesome icon -->
+      <i id="darkModeToggle" class="fas fa-moon">Dark Mode</i>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <!-- Icon for Home link -->
+      <li><a href="#"><img src="/img/home.png" alt="Home"></a></li>
+      <li><a href="#">Manage</a></li>
+    </ul>
+    <!-- Search box for managing pages -->
+    <div class="search-box">
+      <input type="text" placeholder="Search...">
+      <button><i class="fas fa-search">Search</i></button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Slideshow section -->
+    <section class="slideshow-section">
+      <div class="slideshow">
+        <!-- Add slideshow markup and logic here -->
+        <% topRatedMovies.forEach(movie => { %>
+          <div class="slide">
+            <img src="<%= movie.image_url %>" alt="<%= movie.title %>">
+          </div>
+        <% }); %>
+      </div>
+    </section>
+
+    <!-- Top Box Office -->
+    <section id="box-office-section">
+      <h2>Top Box Office</h2>
+      <div class="movie-cards">
+        <!-- Add cards for top box office movies here -->
+        <% topBoxOfficeMovies.forEach(movie => { %>
+          <div class="movie-card" onclick="showMovieDetails('<%= movie.title %>', '<%= movie.rating %>', '<%= movie.box_office %>')">
+            <img src="<%= movie.image_url %>" alt="<%= movie.title %>">
+          </div>
+        <% }); %>
+      </div>
+    </section>
+
+    <!-- Top Favorites -->
+    <section id="favorites-section">
+      <h2>Top Favorites</h2>
+      <div class="movie-cards">
+        <!-- Add cards for top favorite movies here -->
+        <% topFavoriteMovies.forEach(movie => { %>
+          <div class="movie-card" onclick="showMovieDetails('<%= movie.title %>', '<%= movie.rating %>', '')">
+            <img src="<%= movie.image_url %>" alt="<%= movie.title %>">
+          </div>
+        <% }); %>
+      </div>
+    </section>
+  </main>
+
+  <!-- Movie Details Modal -->
+  <div id="movieDetailsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="movie-details">
+        <h2 id="movieTitle"></h2>
+        <div class="details">
+          <p id="movieRating"></p>
+          <p id="boxOffice"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showMovieDetails(title, rating, boxOffice) {
+      const modal = document.getElementById('movieDetailsModal');
+      const movieTitle = document.getElementById('movieTitle');
+      const movieRating = document.getElementById('movieRating');
+      const boxOfficeElement = document.getElementById('boxOffice');
+
+      movieTitle.innerText = title;
+      movieRating.innerText = `Rating: ${rating}`;
+      boxOfficeElement.innerText = `Box Office: ${boxOffice || 'N/A'}`;
+
+      modal.style.display = 'block';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('movieDetailsModal');
+      modal.style.display = 'none';
+    }
+
+    // Close modal if the user clicks outside of it
+    window.onclick = function(event) {
+      const modal = document.getElementById('movieDetailsModal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const body = document.body;
+
+      darkModeToggle.addEventListener('click', function() {
+        body.classList.toggle('dark-mode');
+      });
+    });
+  </script>
+</body>
+</html>
